@@ -96,7 +96,11 @@ class Controller(Node):
             self.found_blue_sign = True
 
         if self.found_blue_sign and self.allowed_to_move and self.warn_sign:
+            msg.linear.x = 0.0
+            msg.angular.z = 0.0
+            self.publisher_cmd_vel_.publish(msg)
             self.finish()
+            return
 
         self.publisher_cmd_vel_.publish(msg)
         

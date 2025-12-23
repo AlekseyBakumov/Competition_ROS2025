@@ -120,11 +120,6 @@ class Controller(Node):
         self.publisher_cmd_vel_.publish(msg)
         
     def finish(self):
-        # Отправить сообщение о завершении миссии с информацией о командеsh()
-
-        self.publisher_cmd_vel_.publish(msg)
-        
-    def finish(self):
         msg = String()
         self.pub = self.create_publisher(String, '/robot_finish', 10)
         msg.data = "NAVI: Копылов Матвей, Бакумов Алексей, Тишкин Андрей"

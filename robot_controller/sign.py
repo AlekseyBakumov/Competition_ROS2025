@@ -26,8 +26,8 @@ class TurnSignNode(Node):
         # Подписка на RGB-поток камеры для обнаружения знаков
         self.color_sub = self.create_subscription(Image, '/color/image', self.color_callback, 10)
         # Подписка на поток глубины для фильтрации на расстояние пересечения
-        self.depth_sub = self.create_subscription(Image, '/depth/image', self.depth_callback, 10)
-        # Издатель отладочного изображения (маски и контуры для визуализации)
+        self.depth_sub =  self.create_subscription(Image, '/depth/image', self.depth_callback, 10)
+        # Издатель отладочного8изображения (маски и контуры для визуализации)
         self.pub_dbg = self.create_publisher(Image, 'processed_sign/image', 10)
         
         # Буфер глубины (маска валидных пиксельных дистанций)
@@ -44,7 +44,7 @@ class TurnSignNode(Node):
         self.timer = self.create_timer(0.1, self.loop)
 
         # Угловая скорость для поворота влево (положительное значение)
-        self.left_angle = 0.9
+        self.left_angle = 0.6
         # Угловая скорость для поворота вправо (отрицательное значение)
         self.right_angle = -0.8
         # Линейная скорость при движении по команде знака (0 = стояние на месте)
